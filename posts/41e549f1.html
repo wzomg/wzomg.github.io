@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="hdu 1787 GCD AgainProblem Description Do you have spent some time to think and try to solve those unsolved problem after one ACM contest?No? Oh, you must do this when you want to become a “Big Cattle”">
+<meta name="keywords" content="欧拉函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉函数例题汇总">
+<meta property="og:url" content="https://Acgoto.github.io/posts/41e549f1.html">
+<meta property="og:site_name" content="ZZW&#39;s Blog">
+<meta property="og:description" content="hdu 1787 GCD AgainProblem Description Do you have spent some time to think and try to solve those unsolved problem after one ACM contest?No? Oh, you must do this when you want to become a “Big Cattle”">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-19T08:30:16.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="欧拉函数例题汇总">
+<meta name="twitter:description" content="hdu 1787 GCD AgainProblem Description Do you have spent some time to think and try to solve those unsolved problem after one ACM contest?No? Oh, you must do this when you want to become a “Big Cattle”">
+  <link rel="canonical" href="https://Acgoto.github.io/posts/41e549f1">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>欧拉函数例题汇总 | ZZW's Blog</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZZW's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Step by step!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup">
+  <div class="search-header">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <div class="search-input-wrapper">
+      <input autocomplete="off" autocorrect="off" autocapitalize="none"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="search-input">
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+  <div id="search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Acgoto.github.io/posts/41e549f1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Acgoto">
+      <meta itemprop="description" content="A thousand miles begins with a single step.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZZW's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">欧拉函数例题汇总
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-22 08:50:25" itemprop="dateCreated datePublished" datetime="2019-01-22T08:50:25+08:00">2019-01-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-19 16:30:16" itemprop="dateModified" datetime="2019-07-19T16:30:16+08:00">2019-07-19</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法训练/" itemprop="url" rel="index"><span itemprop="name">算法训练</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>10k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>9 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="hdu-1787-GCD-Again"><a href="#hdu-1787-GCD-Again" class="headerlink" title="hdu 1787 GCD Again"></a>hdu 1787 GCD Again</h3><h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><blockquote>
+<p>Do you have spent some time to think and try to solve those unsolved problem after one ACM contest?<br>No? Oh, you must do this when you want to become a “Big Cattle”.<br>Now you will find that this problem is so familiar:<br>The greatest common divisor $ GCD (a, b) $ of two positive integers a and b, sometimes written $ (a, b) $ , is the largest divisor common to a and b. For example, $ (1, 2) = 1 $, $ (12, 18) = 6 $. $ (a, b) $ can be easily found by the Euclidean algorithm. Now I am considering a little more difficult problem:<br>Given an integer N, please count the number of the integers $ M (0&lt; M &lt; N) $ which satisfies $ (N, M) &gt; 1 $.<br>This is a simple version of problem “GCD” which you have done in a contest recently,so I name this problem “GCD Again”.If you cannot solve it still,please take a good think about your method of study.Good Luck!</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><blockquote>
+<p>Input contains multiple test cases. Each test case contains an integers $ N (1&lt;N&lt;100000000) $. A test case containing 0 terminates the input and this test case is not to be processed.</p>
+</blockquote>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><blockquote>
+<p>For each integers N you should output the number of integers M in one line, and with one line of output for each line in input. </p>
+</blockquote>
+<h4 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">4</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">求小于n且与n不互质的正整数的个数。</span><br></pre></td></tr></table></figure>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line">LL n;</span><br><span class="line"><span class="function">LL <span class="title">get_Euler</span><span class="params">(LL x)</span></span>&#123;</span><br><span class="line">    LL res = x;</span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1L</span>L) res = res / x * (x - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &amp;&amp; n) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; n - <span class="number">1</span> - get_Euler(n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="hdu-2824-The-Euler-function"><a href="#hdu-2824-The-Euler-function" class="headerlink" title="hdu 2824 The Euler function"></a>hdu 2824 The Euler function</h3><h4 id="Problem-Description-1"><a href="#Problem-Description-1" class="headerlink" title="Problem Description"></a>Problem Description</h4><blockquote>
+<p>The Euler function phi is an important kind of function in number theory, $ (n) $ represents the amount of the numbers which are smaller than n and coprime to n, and this function has a lot of beautiful characteristics. Here comes a very easy question: suppose you are given a, b, try to calculate $ (a)+ (a+1)+….+ (b) $.</p>
+</blockquote>
+<h4 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h4><blockquote>
+<p>There are several test cases. Each line has two integers $ a, b (2&lt;a&lt;b&lt;3000000) $ .</p>
+</blockquote>
+<h4 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h4><blockquote>
+<p>Output the result of $ (a)+ (a+1)+….+ (b) $.</p>
+</blockquote>
+<h4 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input"></a>Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 100</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output"></a>Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3042</span><br></pre></td></tr></table></figure>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>打表求欧拉函数值前缀和，注意只需开一个数组就够了，避免超内存。</p>
+</blockquote>
+<h4 id="AC代码：-1"><a href="#AC代码：-1" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> LL maxn = <span class="number">3e6</span>+<span class="number">5</span>;</span><br><span class="line">LL a, b, phi[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    phi[<span class="number">0</span>] = <span class="number">0L</span>L, phi[<span class="number">1</span>] = <span class="number">1L</span>L; <span class="comment">///1的欧拉函数值为1，唯一与1互质的数</span></span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2</span>; i &lt; maxn; ++i) phi[i] = i; <span class="comment">///先初始化为其本身</span></span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(phi[i] == i) &#123; <span class="comment">///如果欧拉函数值仍为其本身，说明i为素数</span></span><br><span class="line">            <span class="keyword">for</span>(LL j = i; j &lt; maxn; j += i) <span class="comment">///把i的欧拉函数值改变，同时也把能被素因子i整除的数的欧拉函数值改变</span></span><br><span class="line">                phi[j] = phi[j] / i * (i - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i &lt; maxn; ++i) phi[i] += phi[i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    phi_table(); <span class="comment">///预处理打表</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; phi[b] - phi[a - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="hdu-3501-Calculation-2"><a href="#hdu-3501-Calculation-2" class="headerlink" title="hdu 3501 Calculation 2"></a>hdu 3501 Calculation 2</h3><h4 id="Problem-Description-2"><a href="#Problem-Description-2" class="headerlink" title="Problem Description"></a>Problem Description</h4><blockquote>
+<p>Given a positive integer N, your task is to calculate the sum of the positive integers less than N which are not coprime to N. A is said to be coprime to B if A, B share no common positive divisors except 1.</p>
+</blockquote>
+<h4 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h4><blockquote>
+<p>For each test case, there is a line containing a positive integer $ N(1 ≤ N ≤ 1000000000) $. A line containing a single 0 follows the last test case.</p>
+</blockquote>
+<h4 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h4><blockquote>
+<p>For each test case, you should print the sum module 1000000007 in a line.</p>
+</blockquote>
+<h4 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input"></a>Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output"></a>Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>求小于n且与n不互质的所有正整数之和，公式：$ [\frac{n(n - 1)}{2} - \frac{n*\varphi(n)}{2}] mod \; 1000000007 $.</p>
+</blockquote>
+<h4 id="AC代码：-2"><a href="#AC代码：-2" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> LL mod = <span class="number">1000000007</span>;</span><br><span class="line">LL n;</span><br><span class="line"><span class="function">LL <span class="title">get_Euler</span><span class="params">(LL x)</span></span>&#123;</span><br><span class="line">    LL res = x; <span class="comment">///初始值</span></span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>); <span class="comment">///先除后乘，避免数据过大</span></span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1L</span>L) res = res / x * (x - <span class="number">1</span>); <span class="comment">///若x大于1，则剩下的x必为素因子</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &amp;&amp; n) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (n * (n - <span class="number">1</span>) / <span class="number">2</span> - n * get_Euler(n) / <span class="number">2</span>) % mod &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="hdu-2588-GCD"><a href="#hdu-2588-GCD" class="headerlink" title="hdu 2588 GCD"></a>hdu 2588 GCD</h3><h4 id="Problem-Description-3"><a href="#Problem-Description-3" class="headerlink" title="Problem Description"></a>Problem Description</h4><blockquote>
+<p>The greatest common divisor $ GCD(a, b) $ of two positive integers a and b,sometimes written $ (a,b) $, is the largest divisor common to a and b,For example,<br>$ (1, 2) = 1, (12,18)=6 .(a,b) $ can be easily found by the Euclidean algorithm. Now Carp is considering a little more difficult problem:<br>Given integers N and M, how many integer X satisfies $ 1 \leq  X \leq N $ and $ (X, N) \geq M $.</p>
+</blockquote>
+<h4 id="Input-3"><a href="#Input-3" class="headerlink" title="Input"></a>Input</h4><blockquote>
+<p>The first line of input is an integer $ T(T \leq 100) $ representing the number of test cases. The following T lines each contains two numbers N and M<br>$ (2 \leq N \leq 1000000000, 1 \leq M \leq N) $, representing a test case.</p>
+</blockquote>
+<h4 id="Output-3"><a href="#Output-3" class="headerlink" title="Output"></a>Output</h4><blockquote>
+<p>For each test case,output the answer on a single line.</p>
+</blockquote>
+<h4 id="Sample-Input-3"><a href="#Sample-Input-3" class="headerlink" title="Sample Input"></a>Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 1</span><br><span class="line">10 2</span><br><span class="line">10000 72</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output-3"><a href="#Sample-Output-3" class="headerlink" title="Sample Output"></a>Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">6</span><br><span class="line">260</span><br></pre></td></tr></table></figure>
+<h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>$ \because GCD(X, N) \geq M, X \in [1,N], \therefore GCD(X, N) $ 一定是N的约数。假设我们已经知道N的一个约数为 $ P(P \geq M) $，则问题转换成在 $ [1,N] $ 内有多少个数X，满足$ GCD(X, N) = P $ (假设P是一个已知值)，接下来就是枚举每个 $ P(P \geq M) $，累加每个P对应X的个数。但是对于每个不小于M的N的约数P去计算满足$ GCD(X, N) \geq M $ 的X的个数的情况可能比较复杂，需要考虑的情况比较多，简单的想法是：在 $ [1,N] $内用 $ O(NlogN) $ 的时间复杂度判断一下 $ GCD(X, N) $ 是否不小于M，但是题目中N最大为$ 10^{10} $，这肯定是超时的了。<br>因此进一步推导：$ \because GCD(X, N) = P, \therefore GCD(\frac{X}{P}, \frac{N}{P}) = 1 $（很明显 $ \frac{X}{P} $ 与 $  \frac{N}{P} $ 互质），又 $\because X \leq N $，$\therefore  \frac{X}{P} \leq \frac{N}{P} $，而问题是求X的个数，结合欧拉函数的定义可知即求小于 $ \frac{N}{P} $ 且与其互质的正整数 $ \frac{X}{P} $ 的个数，即求 $ \varphi(\frac{N}{P}) $。对于N的每个约数P，我们只需从1枚举到 $ \sqrt{N} $ 即可，因为 $ \frac{N}{P} $ 可以得到N的另一个约数（相当于枚举了N的所有约数），这样时间复杂度就大大降低了。</p>
+</blockquote>
+<h4 id="AC代码：-3"><a href="#AC代码：-3" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> LL mod = <span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">int</span> T; LL n, m, ans;</span><br><span class="line"><span class="function">LL <span class="title">get_Euler</span><span class="params">(LL x)</span></span>&#123;</span><br><span class="line">    LL res = x; <span class="comment">///初始值</span></span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>); <span class="comment">///先除后乘，避免数据过大</span></span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1L</span>L) res = res / x * (x - <span class="number">1</span>); <span class="comment">///若x大于1，则剩下的x必为素因子</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; T) &#123;</span><br><span class="line">        <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m; ans = <span class="number">0L</span>L;</span><br><span class="line">            <span class="keyword">for</span>(LL i = <span class="number">1L</span>L; i * i &lt;= n; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span>(n % i) <span class="keyword">continue</span>; <span class="comment">///跳过不是n的约数</span></span><br><span class="line">                <span class="keyword">if</span>(i &gt;= m &amp;&amp; i * i != n) ans += get_Euler(n / i); <span class="comment">///约数i不小于m，累加phi[n/i]，如果i*i==n，只算一次即可</span></span><br><span class="line">                <span class="keyword">if</span>(n / i &gt;= m) ans += get_Euler(i); <span class="comment">///另一个约数n/i不小于m，累加phi[n/(n/i)]=phi[i]</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="poj-2480-Longge’s-problem"><a href="#poj-2480-Longge’s-problem" class="headerlink" title="poj 2480 Longge’s problem"></a>poj 2480 Longge’s problem</h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><blockquote>
+<p>Longge is good at mathematics and he likes to think about hard mathematical problems which will be solved by some graceful algorithms. Now a problem comes: Given an integer $ N(1 &lt; N &lt; 2^{31}) $,you are to calculate <script type="math/tex">\sum gcd(i, N), 1 \leq  i \leq N</script>. “Oh, I know, I know!” Longge shouts! But do you know? Please solve it. </p>
+</blockquote>
+<h4 id="Input-4"><a href="#Input-4" class="headerlink" title="Input"></a>Input</h4><blockquote>
+<p>Input contain several test case. A number N per line. </p>
+</blockquote>
+<h4 id="Output-4"><a href="#Output-4" class="headerlink" title="Output"></a>Output</h4><blockquote>
+<p>For each N, output <script type="math/tex">\sum gcd(i, N), 1 \leq  i \leq N</script>, a line</p>
+</blockquote>
+<h4 id="Sample-Input-4"><a href="#Sample-Input-4" class="headerlink" title="Sample Input"></a>Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output-4"><a href="#Sample-Output-4" class="headerlink" title="Sample Output"></a>Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+<h4 id="思路1："><a href="#思路1：" class="headerlink" title="思路1："></a>思路1：</h4><blockquote>
+<p>给出一个数n，求 $ 1-n $ 这n个数与n的最大公约数之和。举个栗子：当$ n = 4 $ 时，1，2，3，4与4的最大公约数分别为1，2，1，4，累加和为8。正解：$ 1-n $ 中每个数与n的最大公约数肯定是n的一个因子，所以我们只需要枚举n的每一个因子 $ x \in [1, \sqrt{n}] $ ，然后看有多少个满足 $ gcd(k, n) == x $，即求满足 $ gcd(\frac{k}{x}, \frac{n}{x}) == 1 $ 中k的个数（用欧拉函数求解），则公式为：<script type="math/tex">\sum_{x|n}^n x *  [gcd(\frac{k}{x}, \frac{n}{x}) == 1]</script>。</p>
+</blockquote>
+<h4 id="AC代码1："><a href="#AC代码1：" class="headerlink" title="AC代码1："></a>AC代码1：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line">LL n, ans;</span><br><span class="line"><span class="function">LL <span class="title">get_Euler</span><span class="params">(LL x)</span></span>&#123;</span><br><span class="line">    LL res = x;</span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1L</span>L) res = res / x * (x - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        ans = <span class="number">0L</span>L;</span><br><span class="line">        <span class="keyword">for</span> (LL i = <span class="number">1L</span>L; i * i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>) &#123;</span><br><span class="line">                ans += i * get_Euler(n / i);</span><br><span class="line">                <span class="keyword">if</span>(i * i != n) ans += n / i * get_Euler(i);</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路2："><a href="#思路2：" class="headerlink" title="思路2："></a>思路2：</h4><blockquote>
+<p>思路和上面相同，<script type="math/tex">\because n = p_1^{k_1}p_2^{k_2} \cdots p_m^{k_m}</script>，<script type="math/tex">\therefore</script> 将问题求解转换一下 <script type="math/tex">gcd(i, n) == p_i^j</script>，其中 <script type="math/tex">j \leq k_i</script> 即求 <script type="math/tex">\sum_{p_i^j|n}^n p_i^j * [gcd(\frac{i}{p_i^j}, \frac{n}{p_i^j}) == 1]</script>，<br>化简公式得 <script type="math/tex">\varphi(p_i^{k_i}) = (k_i + 1) * p^{k_i} - k_i * p^{k_i - 1}</script>，<br>再根据积性函数的性质得 <script type="math/tex">\varphi(n) = \prod_{i = 1}^m \varphi(p_i^{k_i})</script>。时间复杂度是 <script type="math/tex">O(\sqrt{n})</script>。</p>
+</blockquote>
+<h4 id="AC代码2："><a href="#AC代码2：" class="headerlink" title="AC代码2："></a>AC代码2：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">LL n;</span><br><span class="line"><span class="function">LL <span class="title">solve</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">    LL p_i, k, ans = <span class="number">1L</span>L;</span><br><span class="line">    <span class="keyword">for</span>(LL i = <span class="number">2L</span>L; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) &#123;</span><br><span class="line">            p_i = <span class="number">1L</span>L, k = <span class="number">0</span>; </span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) &#123;k++, p_i *= i, x /= i;&#125;</span><br><span class="line">            ans *= (k + <span class="number">1</span>) * p_i - k * p_i / i; <span class="comment">///(k+1)*p^k - k*p^(k-1)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1L</span>L) ans *= <span class="number">2</span> * x - <span class="number">1L</span>L; </span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; solve(n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Acgoto</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://Acgoto.github.io/posts/41e549f1.html" title="欧拉函数例题汇总">https://Acgoto.github.io/posts/41e549f1.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/欧拉函数/" rel="tag"><i class="fa fa-tag"></i> 欧拉函数</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/posts/cd54672d.html" rel="next" title="数论笔记整理1">
+                  <i class="fa fa-chevron-left"></i> 数论笔记整理1
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/posts/aed03030.html" rel="prev" title="牛客寒假算法基础集训营1">
+                  牛客寒假算法基础集训营1 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="Acgoto">
+  <p class="site-author-name" itemprop="name">Acgoto</p>
+  <div class="site-description motion-element" itemprop="description">A thousand miles begins with a single step.</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Acgoto" title="GitHub &rarr; https://github.com/Acgoto" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1728387033@qq.com" title="E-Mail &rarr; mailto:1728387033@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.cnblogs.com/acgoto" title="博客园 &rarr; https://www.cnblogs.com/acgoto" rel="noopener" target="_blank"><i class="fa fa-fw fa-codiepie"></i>博客园</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.jianshu.com/u/89c061b853ad" title="简书 &rarr; https://www.jianshu.com/u/89c061b853ad" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hdu-1787-GCD-Again"><span class="nav-number">1.</span> <span class="nav-text">hdu 1787 GCD Again</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input"><span class="nav-number">1.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output"><span class="nav-number">1.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">1.6.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码："><span class="nav-number">1.7.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hdu-2824-The-Euler-function"><span class="nav-number">2.</span> <span class="nav-text">hdu 2824 The Euler function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-1"><span class="nav-number">2.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-1"><span class="nav-number">2.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">2.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">2.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-1"><span class="nav-number">2.6.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-1"><span class="nav-number">2.7.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hdu-3501-Calculation-2"><span class="nav-number">3.</span> <span class="nav-text">hdu 3501 Calculation 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-2"><span class="nav-number">3.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-2"><span class="nav-number">3.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">3.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">3.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-2"><span class="nav-number">3.6.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-2"><span class="nav-number">3.7.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hdu-2588-GCD"><span class="nav-number">4.</span> <span class="nav-text">hdu 2588 GCD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Description-3"><span class="nav-number">4.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-3"><span class="nav-number">4.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-3"><span class="nav-number">4.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-3"><span class="nav-number">4.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-3"><span class="nav-number">4.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-3"><span class="nav-number">4.6.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-3"><span class="nav-number">4.7.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poj-2480-Longge’s-problem"><span class="nav-number">5.</span> <span class="nav-text">poj 2480 Longge’s problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">5.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-4"><span class="nav-number">5.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-4"><span class="nav-number">5.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-4"><span class="nav-number">5.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-4"><span class="nav-number">5.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路1："><span class="nav-number">5.6.</span> <span class="nav-text">思路1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码1："><span class="nav-number">5.7.</span> <span class="nav-text">AC代码1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2："><span class="nav-number">5.8.</span> <span class="nav-text">思路2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码2："><span class="nav-number">5.9.</span> <span class="nav-text">AC代码2：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Acgoto</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">131k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+      <div class="reading-progress-bar"></div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='125,123,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>

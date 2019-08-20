@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.ico?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="A.出题题目描述： 小B准备出模拟赛。她把题目按难度分为四等，分值分别为6,7,8,9。已知小B共出了m道题，共n分。求小B最少出了多少道6分题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客寒假算法基础集训营6">
+<meta property="og:url" content="https://Acgoto.github.io/posts/30b4a593.html">
+<meta property="og:site_name" content="ZZW&#39;s Blog">
+<meta property="og:description" content="A.出题题目描述： 小B准备出模拟赛。她把题目按难度分为四等，分值分别为6,7,8,9。已知小B共出了m道题，共n分。求小B最少出了多少道6分题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-07T13:49:11.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="牛客寒假算法基础集训营6">
+<meta name="twitter:description" content="A.出题题目描述： 小B准备出模拟赛。她把题目按难度分为四等，分值分别为6,7,8,9。已知小B共出了m道题，共n分。求小B最少出了多少道6分题。">
+  <link rel="canonical" href="https://Acgoto.github.io/posts/30b4a593">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>牛客寒假算法基础集训营6 | ZZW's Blog</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZZW's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Step by step!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup">
+  <div class="search-header">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <div class="search-input-wrapper">
+      <input autocomplete="off" autocorrect="off" autocapitalize="none"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="search-input">
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+  <div id="search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Acgoto.github.io/posts/30b4a593.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Acgoto">
+      <meta itemprop="description" content="A thousand miles begins with a single step.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZZW's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">牛客寒假算法基础集训营6
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-03 11:23:32" itemprop="dateCreated datePublished" datetime="2019-02-03T11:23:32+08:00">2019-02-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-07 21:49:11" itemprop="dateModified" datetime="2019-07-07T21:49:11+08:00">2019-07-07</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/牛客竞赛/" itemprop="url" rel="index"><span itemprop="name">牛客竞赛</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>16k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>14 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="A-出题"><a href="#A-出题" class="headerlink" title="A.出题"></a>A.出题</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>小B准备出模拟赛。<br>她把题目按难度分为四等，分值分别为6,7,8,9。<br>已知小B共出了m道题，共n分。<br>求小B最少出了多少道6分题。    </p>
+</blockquote>
+<a id="more"></a>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>两个正整数n,m</p>
+</blockquote>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一个数，表示答案。<br>若无解，输出”jgzjgzjgz”。</p>
+</blockquote>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">34 5</span><br><span class="line"></span><br><span class="line">32 5</span><br><span class="line"></span><br><span class="line">5 1</span><br></pre></td></tr></table></figure>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">jgzjgzjgz</span><br></pre></td></tr></table></figure>
+<h4 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h4><blockquote>
+<p>$ n,m \leq 10^{12} $</p>
+</blockquote>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>简单数学！这题比赛时居然没做出来qwq，就差在草稿纸上写一下不等式……显然有解的充要条件是 $ 6m \leq n \leq 9m $。若有解：设有 $ x \; (0 \leq x \leq m) $ 道6分题，则剩下的 $ m-x $ 题共 $ n-6x $ 分，其有解的充要条件为 $ 7(m-x) \leq n-6x \leq 9(m-x) $，解得 $ 7m-n \leq x \leq \frac{9m-n}{3} $，即答案为 $ max(0, 7m-n) $。（像这类求最少的问题可以根据题目条件列出不等式找答案qwq）</p>
+</blockquote>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">LL n, m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">6L</span>L * m &gt; n || n &gt; <span class="number">9L</span>L * m ) <span class="built_in">puts</span>(<span class="string">"jgzjgzjgz"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; max(<span class="number">0L</span>L, <span class="number">7L</span>L * m - n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B-煤气灶"><a href="#B-煤气灶" class="headerlink" title="B.煤气灶"></a>B.煤气灶</h3><h4 id="题目描述：-1"><a href="#题目描述：-1" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>小j开始打工，准备赚钱买煤气灶。<br>第一天，小j的工资为n元，之后每天他的工资都比前一天多d元。<br>已知煤气灶需要m元，求小j最少工作几天才能买到煤气灶。</p>
+</blockquote>
+<h4 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>四个整数 $ n,m,d,x $ 分别表示小j第一天的工资，煤气灶的价格，工资每天的增长量，答案不超过x</p>
+</blockquote>
+<h4 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一个数表示答案</p>
+</blockquote>
+<h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 100 20 100</span><br></pre></td></tr></table></figure>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><blockquote>
+<p>10+30+50+70&gt;=100</p>
+</blockquote>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>$ 0 \leq n,d \leq 10^9,n+d&gt;0 $<br>$ 1 \leq m \leq 10^{18} $<br>$ 1 \leq x \leq 10^9 $</p>
+</blockquote>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>简单的等差数列求和！因为数据太大，所以既不能暴力也不能直接用求根公式解未知数x。正解：二分答案！做这道题早就想到要二分了，但交了2发WA之后发现爆long long，于是简单地写了个python再交一发就过了。赛后看了一下题解，get新技能：用除法代替乘法避免爆long long。假设小j工作了k天，则总工资 $ = n \times  k + d \times \frac{k(k-1)}{2} \ge m $，移项整理得：$ d \times k(k-1) \ge 2(m-n \times  k) $。因为 $ a \times b \ge c \Leftrightarrow  a \ge \left \lceil \frac{c}{b} \right \rceil $，其中 $ \left \lceil x \right \rceil $ 表示将x上取整，所以判别式分两种情况：①若 $ d = 0 $，则不等式变为 $ n \times k \ge m $；②若 $ d \neq 0 $，则不等式变为 $ k(k-1) \ge \left \lceil \frac{2(m-n \times  k)}{d} \right \rceil = \frac{2(m-n \times  k) +(d -1)}{d} $，以此为条件进行二分，这样就避免了不等式左边爆long long的情况。求解一元二次方程常用二分解法！</p>
+</blockquote>
+<h4 id="AC代码：-1"><a href="#AC代码：-1" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> LL inf = <span class="number">1e9</span>;</span><br><span class="line">LL n, m, d, x, lt, rt, mid, ans;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(LL k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!d) <span class="keyword">return</span> n * k &gt;= m;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> k * (k - <span class="number">1L</span>L) &gt;= (<span class="number">2L</span>L * (m - n * k) + d - <span class="number">1L</span>L) / d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; d &gt;&gt; x) &#123;</span><br><span class="line">        lt = <span class="number">1L</span>L, rt = inf, ans = x; <span class="comment">///若没有进行二分判断，那么ans为给定的x</span></span><br><span class="line">        <span class="keyword">while</span>(lt &lt;= rt) &#123;</span><br><span class="line">            mid = (lt + rt) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(mid)) ans = mid, rt = mid - <span class="number">1L</span>L; <span class="comment">///若满足条件，则找更少的天数，即右区间左移</span></span><br><span class="line">            <span class="keyword">else</span> lt = mid + <span class="number">1L</span>L;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-项链"><a href="#C-项链" class="headerlink" title="C.项链"></a>C.项链</h3><h4 id="题目描述：-2"><a href="#题目描述：-2" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>小B想给她的新项链染色。<br>现在有m种颜色，对于第i种颜色，小B有a_i单位的颜料，每单位颜料可以染项链的一个珠子；同时，小B对于第i种颜色的喜爱度为b_i。<br>已知项链有n个珠子，求染色后每个珠子的颜色的喜爱度之和的最大值。<br>(每个珠子只能至多被染一次，不被染色则喜爱度为0)    </p>
+</blockquote>
+<h4 id="输入描述-2"><a href="#输入描述-2" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>第一行两个数n,m<br>第二行m个数 $ a_i $<br>第三行m个数 $ b_i $</p>
+</blockquote>
+<h4 id="输出描述-2"><a href="#输出描述-2" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一个数表示答案</p>
+</blockquote>
+<h4 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 3</span><br><span class="line">1 2 3</span><br><span class="line">3 2 1</span><br><span class="line"></span><br><span class="line">5 3</span><br><span class="line">1 2 1</span><br><span class="line">3 2 1</span><br></pre></td></tr></table></figure>
+<h4 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line"></span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<h4 id="备注：-1"><a href="#备注：-1" class="headerlink" title="备注："></a>备注：</h4><blockquote>
+<p>$ 1 \leq n,m \leq 10^5, 0 \leq a_i,b_i \leq 10^6 $</p>
+</blockquote>
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>按喜爱度降序排，依次贪心即可。</p>
+</blockquote>
+<h4 id="AC代码：-2"><a href="#AC代码：-2" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span>LL a, b;&#125; nod[maxn];</span><br><span class="line"><span class="keyword">int</span> n, m; LL ans;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node xx, node yy)</span> </span>&#123;<span class="keyword">return</span> xx.b &gt; yy.b;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m)&#123;</span><br><span class="line">        ans = <span class="number">0L</span>L;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) <span class="built_in">cin</span> &gt;&gt; nod[i].a;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) <span class="built_in">cin</span> &gt;&gt; nod[i].b;</span><br><span class="line">        sort(nod, nod + m, cmp);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(n - nod[i].a &gt;= <span class="number">0</span>) ans += nod[i].a * nod[i].b, n -= nod[i].a;</span><br><span class="line">            <span class="keyword">else</span> &#123;ans += nod[i].b * n; <span class="keyword">break</span>;&#125; <span class="comment">///注意：剩下的珠子计算完之后直接break掉</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-美食"><a href="#D-美食" class="headerlink" title="D.美食"></a>D.美食</h3><h4 id="题目描述：-3"><a href="#题目描述：-3" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>小B喜欢美食。现在有n个美食排成一排摆在小B的面前，依次编号为 $ 1 \cdots n $，编号为i的食物大小为 $ a[i] $，即足够小B吃 $ a[i] $ 口。<br>小B每次会吃两口，这两口要么是编号相同的美食，要么是编号之差的绝对值为1的美食。小B想知道，她最多能吃几次？</p>
+</blockquote>
+<h4 id="输入描述-3"><a href="#输入描述-3" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>第1行一个正整数n，表示美食个数<br>接下来n行，第i行一个整数 $ a[i] $，表示编号为i的美食的大小</p>
+</blockquote>
+<h4 id="输出描述-3"><a href="#输出描述-3" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一个数表示小B最多吃几次。</p>
+</blockquote>
+<h4 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1</span><br><span class="line">5</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<h4 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+<h4 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h4><blockquote>
+<p>用二元组(a,b)表示某一次吃的两个美食分别为第a个美食和第b个美食，则下面为一个吃10次的方案：$ (1,2)(2,2)(2,2)(3,4)(3,4)(3,4)(3,4)(3,4)(3,4)(3,4) $<br>注意不一定要吃完。</p>
+</blockquote>
+<h4 id="备注-1"><a href="#备注-1" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>$ 1 \leq n \leq 10^5, 0 \leq a[i] \leq 10^9 $</p>
+</blockquote>
+<h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>简单贪心！模拟一下样例即可得出策略。</p>
+</blockquote>
+<h4 id="AC代码：-3"><a href="#AC代码：-3" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line">LL n, a[maxn], ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        ans = <span class="number">0L</span>L;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] % <span class="number">2</span> == <span class="number">1</span> &amp;&amp; a[i + <span class="number">1</span>] &gt; <span class="number">0L</span>L) ans++, a[i + <span class="number">1</span>]--;</span><br><span class="line">            ans += a[i] / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="E-海啸"><a href="#E-海啸" class="headerlink" title="E.海啸"></a>E.海啸</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><blockquote>
+<p>有一个沿海地区，可以看作有n行m列的城市，第i行第j列的城市海拔为 $ h[i][j] $。<br>由于沿海，所以这个地区经常会发生海啸。海啸发生时，部分城市会被淹没，具体来说，海水高度会达到d，因此海拔低于d的城市都会被淹没。现在有q次询问，每次问你一个矩形区域中，有多少城市不会被淹没。</p>
+</blockquote>
+<h4 id="输入描述-4"><a href="#输入描述-4" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>第一行三个整数n,m,d，具体含义见题目描述。<br>接下来n行，每行m个整数，其中第i行第j列的整数为 $ h[i][j] $，具体含义见题目描述。<br>第n+2行一个整数q，表示询问数。<br>接下来q行，每行四个整数a,b,x,y，<br>表示询问从第a行第b列到第x行第y列的矩形地区中，有多少地区不会被淹没。<br>即有多少个i,j，满足 $ a \leq i \leq x,b \leq j \leq y $，且 $ h[i][j] \ge d $ 。</p>
+</blockquote>
+<h4 id="输出描述-4"><a href="#输出描述-4" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>共q行，第i行一个整数，表示第i个询问的答案。</p>
+</blockquote>
+<h4 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 3 3</span><br><span class="line">1 2 3</span><br><span class="line">2 1 5</span><br><span class="line">4 3 2</span><br><span class="line">2</span><br><span class="line">1 2 2 3</span><br><span class="line">2 1 3 3</span><br></pre></td></tr></table></figure>
+<h4 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="备注-2"><a href="#备注-2" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>$ 1 \leq n×m \leq 10^6 $<br>$ 1 \leq q \leq 10^5 $<br>$ 0 \leq d,h[i][j] \leq 10^9 $<br>$ 1 \leq a \leq x \leq n, 1 \leq b \leq y \leq m $ </p>
+</blockquote>
+<h4 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>二维树状数组求前缀和！注意：vector容器的大小要么一开始申请好，要么push_back往容器加元素，但后者大小取决于压入元素的个数。</p>
+</blockquote>
+<h4 id="AC代码：-4"><a href="#AC代码：-4" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec[maxn], num[maxn];</span><br><span class="line"><span class="keyword">int</span> n, m, d, a, b, x, y, q;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>; <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)&#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = x; i &lt;= n; i += i &amp; -i)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = y; j &lt;= m; j += j &amp; -j)</span><br><span class="line">            num[i][j] += val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = x; i &gt; <span class="number">0</span>; i -= i &amp; -i)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = y; j &gt; <span class="number">0</span>; j -= j &amp; -j)</span><br><span class="line">            ans += num[i][j];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;d)) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) vec[i].clear(), num[i].clear(); <span class="comment">///先清理</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) vec[i].resize(m + <span class="number">5</span>), num[i].resize(m + <span class="number">5</span>); <span class="comment">///再申请二维空间</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n ; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">                vec[i][j] = read();</span><br><span class="line">                <span class="keyword">if</span>(vec[i][j] &gt;= d) add(i, j, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        q = read();</span><br><span class="line">        <span class="keyword">while</span>(q--) &#123;</span><br><span class="line">            a = read(), b = read(), x = read(), y = read();</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(x, y) - query(a - <span class="number">1</span>, y) - query(x, b - <span class="number">1</span>) + query(a - <span class="number">1</span>, b - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="F-石头剪刀布"><a href="#F-石头剪刀布" class="headerlink" title="F.石头剪刀布"></a>F.石头剪刀布</h3><h4 id="题目描述：-4"><a href="#题目描述：-4" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>wzms 今年举办了一场剪刀石头布大赛，bleaves 被选为负责人。<br>比赛共有 $ 2^n $ 个人参加，分为n轮，在每轮中，第 1 位选手和第 2 位选手对战，胜者作为新的第 1 位选手，<br>第 3 位和第 4 位对战，胜者作为新的第 2 位选手，以此类推。<br>bleaves 调查得知，每个人都有其偏爱决策，每个人在每一次对战中都会使用他的偏爱决策。如果一次对战的双方的偏爱决策相同，那么这次对战就永远不会结束，所以 bleaves 不希望这种情况发生。<br>现在 bleaves 知道了每个人的偏爱决策，但她不知道如何安排初始的次序，使得上面的情况不会发生，你能帮帮她吗？</p>
+</blockquote>
+<h4 id="输入描述-5"><a href="#输入描述-5" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>一行三个整数 R,P,S ，表示偏爱石头，布，剪刀的人数分别为 R,P,S 。</p>
+</blockquote>
+<h4 id="输出描述-5"><a href="#输出描述-5" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>如果无解，输出 <code>IMPOSSIBLE</code> ；<br>否则输出一个长度为 $ R+P+S $ 的字符串，第i个字符表示初始时第i位选手的偏爱决策，如果有多种方案，输出字典序最小的。</p>
+</blockquote>
+<h4 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 1 0</span><br><span class="line"></span><br><span class="line">2 0 0</span><br><span class="line"></span><br><span class="line">1 1 2</span><br></pre></td></tr></table></figure>
+<h4 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PR</span><br><span class="line"></span><br><span class="line">IMPOSSIBLE</span><br><span class="line"></span><br><span class="line">PSRS</span><br></pre></td></tr></table></figure>
+<h4 id="说明-2"><a href="#说明-2" class="headerlink" title="说明"></a>说明</h4><blockquote>
+<p>只有 2 个选手，一个偏爱石头，一个偏爱布，无论次序如何，偏爱布的选手都会胜出。<br>所以方案可以是 PR 和 RP ，其中字典序最小的 PR 。</p>
+</blockquote>
+<h4 id="备注-3"><a href="#备注-3" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>全部的输入数据满足：$ R+P+S=2^n, 1 \leq n \leq 20 $。</p>
+</blockquote>
+<h4 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>这道题应该是整场较难的了，若能想到下面这位大佬的解法（个人觉得非常好理解），那就简单多了，很感谢某位已AK的大佬赛后提供的精彩题解，Orz！根据大佬的思路，重新整理了一下想法：根据获胜者的偏爱决策可以推出对战的两人的偏爱决策，所以这题要先从结局来反推初始状态的3个已知量是否有解。若有解，只需根据偏爱决策来递归处理字典序即可。<br>先规定一下：0代表石头，1代表布，2代表剪刀。<br>若最后一场获胜者为1（布），根据偏爱决策可得最后一局的组合为（1，0），倒数第二局的组合为（1，0）和（0，2），倒数第三局的组合为（1，0）……<br>从结局枚举到之前的状态可知<code>若一轮比赛结束时的状态确定了，则这轮比赛刚开始时的状态也一定是确定的</code>。<br>举个栗子：假设一轮比赛结束后，剩下x个0，y个1，z个2，那么这轮比赛开始时，一定有这样的组合：x局（0，2），y局（1，0），z局（2，1）。<br>设一轮比赛开始时有A个0，B个1，C个2，则有 $ A = x + y, B = y + z, C = x + z $，<br>解得 $ x=\frac{A+C-B}{2}, y=\frac{A+B-C}{2}, z=\frac{B+C-A}{2} $。<br>于是，我们就找到了递归（终止）条件：根据题目已给的A,B,C，递归求解下一场的状态，若最终能化成0,0,1的状态，则说明存在一种策略，否则不存在。<br>接下来就更简单了，通过前面已推得最终的获胜者，那么就可以反推出之前所有的比赛情况，所以只需先递归下来求出结果，然后每次回溯时都判断一下输出最小字典序即可。</p>
+</blockquote>
+<h4 id="AC代码：-5"><a href="#AC代码：-5" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">int</span> stone, cloth, scissors, winner; <span class="comment">///石头、布，剪刀，赢家</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> _stone, <span class="keyword">int</span> _cloth, <span class="keyword">int</span> _scissors)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_stone &lt; <span class="number">0</span> || _cloth &lt; <span class="number">0</span> || _scissors &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(_stone == <span class="number">0</span> &amp;&amp; _cloth == <span class="number">0</span> &amp;&amp; _scissors == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(_stone == <span class="number">1</span> &amp;&amp; _cloth == <span class="number">0</span> &amp;&amp; _scissors == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">///石头赢</span></span><br><span class="line">    <span class="keyword">if</span>(_stone == <span class="number">0</span> &amp;&amp; _cloth == <span class="number">1</span> &amp;&amp; _scissors == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">///布赢</span></span><br><span class="line">    <span class="keyword">if</span>(_stone == <span class="number">0</span> &amp;&amp; _cloth == <span class="number">0</span> &amp;&amp; _scissors == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">2</span>; <span class="comment">///剪刀赢</span></span><br><span class="line">    <span class="keyword">return</span> check((_stone + _scissors - _cloth) &gt;&gt; <span class="number">1</span>, (_stone + _cloth - _scissors) &gt;&gt; <span class="number">1</span>, (_cloth + _scissors - _stone) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">get_ans</span><span class="params">(<span class="keyword">int</span> _winner, <span class="keyword">int</span> _stat)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_stat == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(_winner == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">"RS"</span>; <span class="comment">///石头赢</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(_winner == <span class="number">1</span>) <span class="keyword">return</span> <span class="string">"PR"</span>; <span class="comment">///布赢</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="string">"PS"</span>; <span class="comment">///剪刀赢</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(_winner == <span class="number">0</span>) &#123; <span class="comment">///石头</span></span><br><span class="line">        <span class="built_in">string</span> s1 = get_ans(<span class="number">0</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">string</span> s2 = get_ans(<span class="number">2</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(s1 &lt; s2) <span class="keyword">return</span> s1 + s2; <span class="comment">///字典序最小</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> s2 + s1;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(_winner == <span class="number">1</span>) &#123; <span class="comment">///布</span></span><br><span class="line">        <span class="built_in">string</span> s1 = get_ans(<span class="number">1</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">string</span> s2 = get_ans(<span class="number">0</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(s1 &lt; s2) <span class="keyword">return</span> s1 + s2;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> s2 + s1;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123; <span class="comment">///剪刀</span></span><br><span class="line">        <span class="built_in">string</span> s1 = get_ans(<span class="number">2</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">string</span> s2 = get_ans(<span class="number">1</span>, _stat &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(s1 &lt; s2) <span class="keyword">return</span> s1 + s2;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> s2 + s1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; stone &gt;&gt; cloth &gt;&gt; scissors) &#123;</span><br><span class="line">        winner = check(stone, cloth, scissors);</span><br><span class="line">        <span class="keyword">if</span>(winner == <span class="number">-1</span>) &#123;<span class="built_in">puts</span>(<span class="string">"IMPOSSIBLE"</span>); <span class="keyword">continue</span>;&#125; <span class="comment">///无解</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; get_ans(winner, (stone + cloth + scissors) &gt;&gt; <span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="G-区间或和"><a href="#G-区间或和" class="headerlink" title="G.区间或和"></a>G.区间或和</h3><h4 id="题目描述：-5"><a href="#题目描述：-5" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>求 $ a|(a+1)|(a+2)| \cdots |(b-1)|b $ 。<br>其中|表示 [按位或]。</p>
+</blockquote>
+<h4 id="输入描述-6"><a href="#输入描述-6" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>多组输入，每行两个数表示a和b</p>
+</blockquote>
+<h4 id="输出描述-6"><a href="#输出描述-6" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>对于每组输入，输出一个数 $ a|(a+1)|(a+2)| \cdots |(b-1)|b $。</p>
+</blockquote>
+<h4 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">99 109</span><br><span class="line">68 77</span><br><span class="line">55 66</span><br><span class="line">34 43</span><br><span class="line">1111234 1114321</span><br></pre></td></tr></table></figure>
+<h4 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">111</span><br><span class="line">79</span><br><span class="line">127</span><br><span class="line">47</span><br><span class="line">1179647</span><br></pre></td></tr></table></figure>
+<h4 id="备注-4"><a href="#备注-4" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>输入不超过10000行，$ 0 \leq a,b \leq 10^{18}, a \leq b $</p>
+</blockquote>
+<h4 id="思路：-6"><a href="#思路：-6" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>先标记区间左右端点值的二进制中1的位置，然后枚举63个二进制位，再标记一下区间左端点a加上每一位对应的十进制值是否不超过b，最后累加一下二进制中所有被标记为1的位对应的十进制数即可。</p>
+</blockquote>
+<h4 id="AC代码：-6"><a href="#AC代码：-6" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">65</span>;</span><br><span class="line">LL a, b, ans, bit[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(bit, <span class="number">0</span>, <span class="keyword">sizeof</span>(bit)); ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0L</span>L; i &lt; <span class="number">63</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">1L</span>L&lt;&lt;i) &amp; a) bit[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">1L</span>L&lt;&lt;i) &amp; b) bit[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; <span class="number">63</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">1L</span>L&lt;&lt;i) + a &lt;= b) bit[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; <span class="number">63</span>; ++i)</span><br><span class="line">            <span class="keyword">if</span>(bit[i]) ans += <span class="number">1L</span>L&lt;&lt;i;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="H-肥猪"><a href="#H-肥猪" class="headerlink" title="H.肥猪"></a>H.肥猪</h3><h4 id="题目描述：-6"><a href="#题目描述：-6" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>小B来到了一个异世界，成为了肥猪之王。<br>在这个异世界，共有n种肥猪，编号分别为 $ 1,\cdots,n $。小B希望集齐这n种肥猪。<br>召集肥猪有两种方式：<br>1.花费 $ a[i] $ 的金币召唤一只编号为i的肥猪。<br>2.花费x的金币使所有已召集的肥猪进化。<br>即编号为i的肥猪编号变成i+1，特殊的，编号为n的肥猪编号变成1。请问小B最少要花多少金币才能集齐n种肥猪。</p>
+</blockquote>
+<h4 id="输入描述-7"><a href="#输入描述-7" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>第一行两个正整数n,x<br>接下来n行，第i行一个正整数 $ a[i] $</p>
+</blockquote>
+<h4 id="输出描述-7"><a href="#输出描述-7" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一个数表示答案</p>
+</blockquote>
+<h4 id="输入-7"><a href="#输入-7" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2 10</span><br><span class="line">1</span><br><span class="line">20</span><br><span class="line"></span><br><span class="line">4 10</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<h4 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">12</span><br><span class="line"></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<h4 id="备注：-2"><a href="#备注：-2" class="headerlink" title="备注："></a>备注：</h4><blockquote>
+<p>$ 1 \leq n \leq 2000, 1 \leq x, a[i] \leq 10^9 $.</p>
+</blockquote>
+<h4 id="思路：-7"><a href="#思路：-7" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>由题可知，小B最多使用n-1次进化技能。数组a表示不使用进化技能下每种猪的召集成本，数组b表示使用了j个进化技能后，每种猪对应的最小召集成本。解法：暴力枚举 $ 1 \sim n - 1 $ 次进化，求出其中（花费x或 $ a[i] $ 的金币）召集的最小代价即可！</p>
+</blockquote>
+<h4 id="AC代码：-7"><a href="#AC代码：-7" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2005</span>;</span><br><span class="line">LL n, x, ans, tmp, a[maxn], b[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x) &#123;</span><br><span class="line">        ans = <span class="number">0L</span>L;</span><br><span class="line">        <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i], ans += (b[i] = a[i]);</span><br><span class="line">        <span class="keyword">for</span>(LL j = <span class="number">1</span>; j &lt; n; ++j) &#123; <span class="comment">///至多使用n-1次技能</span></span><br><span class="line">            tmp = x * j;</span><br><span class="line">            <span class="keyword">for</span>(LL i = <span class="number">0</span>; i &lt; n; ++i) &#123;<span class="comment">///n种（要进化的）肥猪</span></span><br><span class="line">                <span class="keyword">if</span>(b[(i + j) % n] &gt; a[i]) tmp += (b[(i + j) % n] = a[i]); <span class="comment">///更新b数组第i种猪第j次进化后得到的最小召集成本</span></span><br><span class="line">                <span class="keyword">else</span> tmp += b[(i + j) % n];</span><br><span class="line">            &#125;</span><br><span class="line">            ans = min(ans, tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="I-wzoi"><a href="#I-wzoi" class="headerlink" title="I.wzoi"></a>I.wzoi</h3><h4 id="题目描述：-7"><a href="#题目描述：-7" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>bleaves 最近在 wzoi 上面做题。<br>wzoi 的题目有两种，一种是 noip 题，一种是省选题。<br>bleaves 的做题方式很特别。每一天，她可能会看一道题目，这时她会选择题目种类，然后 wzoi 会在选定种类中随机扔给她一道她还没看过的题，她会把这道题看一遍，然后存在脑子里慢慢思考；她也有可能写题，这时她一定会写没写过的题中看的时间最迟的一题(如果不存在没写过的且没看过的题，她就不能写题)。<br>wzoi 每天会有一个推荐的题目种类，<br>如果 bleaves 看一道题目：如果种类和推荐的相同，那么这道题目最大得分为10，否则为5；如果 bleaves 写一道题目：如果种类和推荐的相同，那么这道题目得分为最大得分，否则为最大得分-5；<br>假如 bleaves 现在还没看过任何一题，并且她知道了 wzoi 接下来一些天每天推荐的种类，问她在这些天的最大得分。</p>
+</blockquote>
+<h4 id="输入描述-8"><a href="#输入描述-8" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>一行一个01串 s ，|s| 表示天数，$ s_i=0 $ 表示 wzoi 第 i 天推荐 noip 题，$ s_i=1 $ 表示 wzoi 第 i 天推荐省选题。</p>
+</blockquote>
+<h4 id="输出描述-8"><a href="#输出描述-8" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>一行一个整数最大得分。</p>
+</blockquote>
+<h4 id="输入-8"><a href="#输入-8" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0011</span><br><span class="line"></span><br><span class="line">0101</span><br><span class="line"></span><br><span class="line">0110</span><br></pre></td></tr></table></figure>
+<h4 id="输出-8"><a href="#输出-8" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">20</span><br><span class="line"></span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+<h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><blockquote>
+<p>样例一：4天行动依次为：看一道 noip 题，写第1天看的题，看一道省选题，写第3天看的题。<br>样例二：4天行动依次为：看一道 noip 题，写第1天看的题，看一道noip题，写第3天看的题。<br>样例三：4天行动依次为：看一道 noip 题，看一道省选题，写第2天看的题，写第1天看的题。</p>
+</blockquote>
+<h4 id="备注-5"><a href="#备注-5" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>全部的输入数据满足：$ 1 \leq n \leq 10^6 $, n 为偶数。</p>
+</blockquote>
+<h4 id="思路：-8"><a href="#思路：-8" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>把看题视作左括号，做题视作右括号，那么问题就转化成简单的括号匹配问题（比赛时没来得及看QWQ）。如果能匹配，那么就能得10分，否则只能得5分，栈模拟即可！</p>
+</blockquote>
+<h4 id="AC代码：-8"><a href="#AC代码：-8" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="built_in">string</span> str; <span class="keyword">int</span> cnt;</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; str) &#123;</span><br><span class="line">        <span class="keyword">while</span>(!st.empty()) st.pop();</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(st.empty()) st.push(str[i]);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(st.top() != str[i]) st.push(str[i]);</span><br><span class="line">            <span class="keyword">else</span> st.pop(), cnt ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; st.size() / <span class="number">2</span> * <span class="number">5</span> + cnt * <span class="number">10</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="J-迷宫"><a href="#J-迷宫" class="headerlink" title="J.迷宫"></a>J.迷宫</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><blockquote>
+<p>你在一个 n 行 m 列的网格迷宫中，迷宫的每一格要么为空，要么有一个障碍。<br>你当前在第 r 行第 c 列(保证该格子为空)。每次移动你可以向上下左右任意一个方向移动一格，前提是不能走到障碍上，也不能超出迷宫的边界。<br>你向左移动的次数不能超过 x 次，向右不能超过 y 次。<br>问在这种情况下，对于每个格子，是否存在一种移动方案让你走到它。<br>输出有多少个格子存在移动方案让你走到它。</p>
+</blockquote>
+<h4 id="输入描述-9"><a href="#输入描述-9" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>第一行两个正整数 n,m 。<br>第二行两个正整数 r,c ，保证 $ 1 \leq r \leq n,1 \leq c \leq m $。<br>第三行两个整数 x,y ，保证 $ 0 \leq x,y \leq 10^9 $ 。<br>接下来 n 行，每行一个长度为 m 的字符串，<br>第 i 行第 j 个字符表示迷宫第 i 行第 j 列的格子，<br>字符为<code>.</code> 表示格子为空，字符为<code>*</code> 表示格子上有一个障碍。</p>
+</blockquote>
+<h4 id="输出描述-9"><a href="#输出描述-9" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>输出一个数，表示有多少个格子存在移动方案让你走到它。</p>
+</blockquote>
+<h4 id="输入-9"><a href="#输入-9" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">.....</span><br><span class="line">.***.</span><br><span class="line">...**</span><br><span class="line">*....</span><br><span class="line"></span><br><span class="line">4 4</span><br><span class="line">2 2</span><br><span class="line">0 1</span><br><span class="line">....</span><br><span class="line">..*.</span><br><span class="line">....</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<h4 id="输出-9"><a href="#输出-9" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line"></span><br><span class="line">7</span><br></pre></td></tr></table></figure>
+<h4 id="说明-3"><a href="#说明-3" class="headerlink" title="说明"></a>说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">样例一：将能走到的格子用+标记：</span><br><span class="line">+++..</span><br><span class="line">+***.</span><br><span class="line">+++**</span><br><span class="line">*+++.</span><br><span class="line">样例二：</span><br><span class="line">.++.</span><br><span class="line">.+*.</span><br><span class="line">.++.</span><br><span class="line">.++.</span><br></pre></td></tr></table></figure>
+<h4 id="备注-6"><a href="#备注-6" class="headerlink" title="备注:"></a>备注:</h4><blockquote>
+<p>对于全部数据， $ 1 \leq n,m \leq 1000 $。</p>
+</blockquote>
+<h4 id="思路：-9"><a href="#思路：-9" class="headerlink" title="思路："></a>思路：</h4><blockquote>
+<p>简单的bfs。从起点 $ (r,c) $ 向左或向右移动后到达的每个坐标点都被赋予2个已有的左移和右移状态量，求满足那些左移状态量不超过x，右移状态量不超过y的坐标点个数。 </p>
+</blockquote>
+<h4 id="AC代码：-9"><a href="#AC代码：-9" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">char</span> mp[maxn][maxn];</span><br><span class="line"><span class="keyword">int</span> n, m, r, c, x, y, ans, dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;&#125;, dist[maxn][maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> dx, dy, gay_l, gay_r;</span><br><span class="line">    node(<span class="keyword">int</span> _x, <span class="keyword">int</span> _y, <span class="keyword">int</span> _gay_l, <span class="keyword">int</span> _gay_r) : dx(_x), dy(_y), gay_l(_gay_l), gay_r(_gay_r) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">queue</span>&lt;node&gt; que;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> dxx, <span class="keyword">int</span> dyy)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dxx &lt; <span class="number">0</span> || dyy &lt; <span class="number">0</span> || dxx &gt;= n || dyy &gt;= m ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> _x, <span class="keyword">int</span> _y, <span class="keyword">int</span> _gay_l, <span class="keyword">int</span> _gay_r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty()) que.pop();</span><br><span class="line">    que.push(node(_x, _y, _gay_l, _gay_r));</span><br><span class="line">    dist[_x][_y] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">        node nod = que.front(); que.pop(), ans++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = nod.dx + dir[i][<span class="number">0</span>], ny = nod.dy + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(check(nx, ny) &amp;&amp; mp[nx][ny] != <span class="string">'*'</span> &amp;&amp; dist[nx][ny] &gt; dist[nod.dx][nod.dy] + <span class="number">1</span>) &#123;</span><br><span class="line">                dist[nx][ny] = dist[nod.dx][nod.dy] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span> || i == <span class="number">1</span>) que.push(node(nx, ny, nod.gay_l, nod.gay_r));</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">2</span> &amp;&amp; nod.gay_l &lt; x) que.push(node(nx, ny, nod.gay_l + <span class="number">1</span>, nod.gay_r));</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">3</span> &amp;&amp; nod.gay_r &lt; y) que.push(node(nx, ny, nod.gay_l, nod.gay_r + <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(dist));</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; r &gt;&gt; c;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) <span class="built_in">cin</span> &gt;&gt; mp[i];</span><br><span class="line">        bfs(r - <span class="number">1</span>, c - <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Acgoto</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://Acgoto.github.io/posts/30b4a593.html" title="牛客寒假算法基础集训营6">https://Acgoto.github.io/posts/30b4a593.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/posts/a9bdf429.html" rel="next" title="牛客寒假算法基础集训营5">
+                  <i class="fa fa-chevron-left"></i> 牛客寒假算法基础集训营5
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/posts/54c860b1.html" rel="prev" title="威尔逊定理例题汇总">
+                  威尔逊定理例题汇总 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="Acgoto">
+  <p class="site-author-name" itemprop="name">Acgoto</p>
+  <div class="site-description motion-element" itemprop="description">A thousand miles begins with a single step.</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Acgoto" title="GitHub &rarr; https://github.com/Acgoto" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1728387033@qq.com" title="E-Mail &rarr; mailto:1728387033@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.cnblogs.com/acgoto" title="博客园 &rarr; https://www.cnblogs.com/acgoto" rel="noopener" target="_blank"><i class="fa fa-fw fa-codiepie"></i>博客园</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.jianshu.com/u/89c061b853ad" title="简书 &rarr; https://www.jianshu.com/u/89c061b853ad" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-出题"><span class="nav-number">1.</span> <span class="nav-text">A.出题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述："><span class="nav-number">1.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述"><span class="nav-number">1.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述"><span class="nav-number">1.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入"><span class="nav-number">1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">1.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注："><span class="nav-number">1.6.</span> <span class="nav-text">备注：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">1.7.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码："><span class="nav-number">1.8.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-煤气灶"><span class="nav-number">2.</span> <span class="nav-text">B.煤气灶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-1"><span class="nav-number">2.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-1"><span class="nav-number">2.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-1"><span class="nav-number">2.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-1"><span class="nav-number">2.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明"><span class="nav-number">2.6.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注"><span class="nav-number">2.7.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-1"><span class="nav-number">2.8.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-1"><span class="nav-number">2.9.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-项链"><span class="nav-number">3.</span> <span class="nav-text">C.项链</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-2"><span class="nav-number">3.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-2"><span class="nav-number">3.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-2"><span class="nav-number">3.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-2"><span class="nav-number">3.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注：-1"><span class="nav-number">3.6.</span> <span class="nav-text">备注：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-2"><span class="nav-number">3.7.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-2"><span class="nav-number">3.8.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-美食"><span class="nav-number">4.</span> <span class="nav-text">D.美食</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-3"><span class="nav-number">4.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-3"><span class="nav-number">4.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-3"><span class="nav-number">4.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-3"><span class="nav-number">4.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明-1"><span class="nav-number">4.6.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-1"><span class="nav-number">4.7.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-3"><span class="nav-number">4.8.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-3"><span class="nav-number">4.9.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-海啸"><span class="nav-number">5.</span> <span class="nav-text">E.海啸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-4"><span class="nav-number">5.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-4"><span class="nav-number">5.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-4"><span class="nav-number">5.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-4"><span class="nav-number">5.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-2"><span class="nav-number">5.6.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-4"><span class="nav-number">5.7.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-4"><span class="nav-number">5.8.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-石头剪刀布"><span class="nav-number">6.</span> <span class="nav-text">F.石头剪刀布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-4"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-5"><span class="nav-number">6.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-5"><span class="nav-number">6.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-5"><span class="nav-number">6.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-5"><span class="nav-number">6.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明-2"><span class="nav-number">6.6.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-3"><span class="nav-number">6.7.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-5"><span class="nav-number">6.8.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-5"><span class="nav-number">6.9.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-区间或和"><span class="nav-number">7.</span> <span class="nav-text">G.区间或和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-5"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-6"><span class="nav-number">7.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-6"><span class="nav-number">7.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-6"><span class="nav-number">7.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-6"><span class="nav-number">7.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-4"><span class="nav-number">7.6.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-6"><span class="nav-number">7.7.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-6"><span class="nav-number">7.8.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-肥猪"><span class="nav-number">8.</span> <span class="nav-text">H.肥猪</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-6"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-7"><span class="nav-number">8.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-7"><span class="nav-number">8.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-7"><span class="nav-number">8.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-7"><span class="nav-number">8.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注：-2"><span class="nav-number">8.6.</span> <span class="nav-text">备注：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-7"><span class="nav-number">8.7.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-7"><span class="nav-number">8.8.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-wzoi"><span class="nav-number">9.</span> <span class="nav-text">I.wzoi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述：-7"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-8"><span class="nav-number">9.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-8"><span class="nav-number">9.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-8"><span class="nav-number">9.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-8"><span class="nav-number">9.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明："><span class="nav-number">9.6.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-5"><span class="nav-number">9.7.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-8"><span class="nav-number">9.8.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-8"><span class="nav-number">9.9.</span> <span class="nav-text">AC代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-迷宫"><span class="nav-number">10.</span> <span class="nav-text">J.迷宫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-9"><span class="nav-number">10.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-9"><span class="nav-number">10.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-9"><span class="nav-number">10.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-9"><span class="nav-number">10.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明-3"><span class="nav-number">10.6.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注-6"><span class="nav-number">10.7.</span> <span class="nav-text">备注:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-9"><span class="nav-number">10.8.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码：-9"><span class="nav-number">10.9.</span> <span class="nav-text">AC代码：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Acgoto</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">131k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+      <div class="reading-progress-bar"></div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='125,123,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
