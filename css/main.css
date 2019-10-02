@@ -1759,7 +1759,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffa76e;
+  background: #14ff1b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2975,6 +2975,7 @@ body {
 .header,
 .header-inner,
 .main-inner,
+#posts > article + article .post-block,
 .post-block {
   border-radius: 20px;
 }
