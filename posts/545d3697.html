@@ -337,7 +337,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.3k</span>
+              <span>5.4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>6 分钟</span>
+              <span>5 分钟</span>
             </span>
           
 
@@ -365,7 +365,7 @@
 </blockquote>
 <a id="more"></a>
 <h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><blockquote>
-<p>一、充分性（逆否命题）：若p不是素数，即p是合数，则 $ (p - 1)! \not\equiv -1 \;( mod \; p) $。<br>特殊情况：当 $ p = 4 $ 时，$ [(p - 1) !\equiv 6 \equiv 2 \;(mod \; p)] \not\equiv -1 \;( mod \; p) $，显然成立；<br>当 $ p &gt; 4 $ 时，分2种情况讨论：<br>①若p不是完全平方数，则 $ \exists \; a, b \in [1, p) \land (a \neq b) $，使得 <script type="math/tex">p = a * b</script>，<br>则 <script type="math/tex">(p - 1) ! \equiv n * a * b \equiv 0 \; (mod \; p)</script>，显然成立。<br>②若p是完全平方数，即 $ \exists \; k &gt; 2 \land (k, 2k &lt; p) $，使得 $ p = k^2 $，<br>则 <script type="math/tex">(p - 1)! \equiv m * (k * 2k) \equiv {m}' * k^2 \equiv 0 \;(mod \; p)</script>，显然也成立。<br>二、必要性：若p为素数，则 $ (p - 1)! \equiv -1 \;(mod \; p) $。<br>当 $ p = 2 \vee p = 3 $ 时，显然恒等式成立；<br>当 $ p \ge 5 $ 时，令集合 $ A = \{1,2,3,\cdots,p-1\} $，显然集合A中每个元素都与p互质，即集合A是模p的一个缩系；令集合 $ B = \{2,3,\cdots,p-2\} $，对 $ \forall \; a \in B $，令集合 $ C = \{a,2a,\cdots,(p-1)a\} $，由缩系的性质可得集合C也是模p的一个缩系，即集合C中每个元素：模p不同余且不能被p整除。<br>下面证明集合C是模p的一个缩系：<br>①因为 $ (p\nmid a \in B) \land (p \nmid b \in A)$，所以<code>素数p不整除集合C中的每个元素</code>；<br>②若 $ \exists \; t_1, t_2 \in A \land (t_1 \neq t_2) $，使得 <script type="math/tex">t_1 * a \equiv t_2 * a \; (mod \; p)</script>，则由同余的性质可得 <script type="math/tex">|t_1 - t_2| * a \equiv 0\;(mod \; p)</script>，又因 <script type="math/tex">|t_1 - t_2| * a \in C</script>，显然这与集合C中每一个元素不能被p整除相矛盾，所以 <script type="math/tex">t_1 * a \not\equiv t_2 * a \; (mod \; p)</script>，即<code>集合C中每个元素模p不同余</code>！<br>因此，$ C \; mod \; p = A $，则对 $ \forall \; a \in B $，必 $ \exists \; b \in A $，使得 $ ab \equiv 1 \;(mod \; p) $。<br>下面证明 $ b \notin \{1,p-1,a\} $：<br>若 $ b = 1 $，则 $ a \equiv a \not\equiv 1 \; (mod \; p) $，显然不成立；<br>若 $ b = p - 1 $，则 $ a(p - 1) \equiv (p - a) \not\equiv 1 (mod \; p) $，显然不成立；<br>若 $ b = a $，则 $ a^2 \equiv 1 \;(mod \; q)$，解得 $ a = 1 \vee  a = p - 1 $，因为 $ a \in B $，所以不成立。<br>综上所述，$ \forall \; a, b \in B $，当a不同时，b也随之不同，即对于集合B中的每一个元素a都能够找到一个与之配对的b，使得 $ ab \equiv 1 \;(mod \; p) $，所以 <script type="math/tex">(p - 1) ! \equiv 1 * 2b_1 * \cdots * (p - 1) (mod \; p) \equiv 1 * (p -1) (mod \; p) \equiv -1 (mod \; p)</script>.证毕！ </p>
+<p>一、充分性（逆否命题）：若p不是素数，即p是合数，则 $ (p - 1)! \not\equiv -1 \;( mod \; p) $。<br>特殊情况：当 $ p = 4 $ 时，$ [(p - 1) !\equiv 6 \equiv 2 \;(mod \; p)] \not\equiv -1 \;( mod \; p) $，显然成立；<br>当 $ p &gt; 4 $ 时，分2种情况讨论：<br>①若p不是完全平方数，则 $ \exists \; a, b \in [1, p) \land (a \neq b) $，使得 <script type="math/tex">p = a * b</script>，<br>则 <script type="math/tex">(p - 1) ! \equiv n * a * b \equiv 0 \; (mod \; p)</script>，显然成立。<br>②若p是完全平方数，即 $ \exists \; k &gt; 2 \land (k, 2k &lt; p) $，使得 $ p = k^2 $，<br>则 <script type="math/tex">(p - 1)! \equiv m * (k * 2k) \equiv {m}' * k^2 \equiv 0 \;(mod \; p)</script>，显然也成立。<br>二、必要性：若p为素数，则 $ (p - 1)! \equiv -1 \;(mod \; p) $。<br>当 $ p = 2 \vee p = 3 $ 时，显然恒等式成立；<br>当 $ p \ge 5 $ 时，令集合 $ A = {1,2,3,\cdots,p-1} $，显然集合A中每个元素都与p互质，即集合A是模p的一个缩系；令集合 $ B = {2,3,\cdots,p-2} $，对 $ \forall \; a \in B $，令集合 $ C = {a,2a,\cdots,(p-1)a} $，由缩系的性质可得集合C也是模p的一个缩系，即集合C中每个元素：模p不同余且不能被p整除。<br>下面证明集合C是模p的一个缩系：<br>①因为 $ (p\nmid a \in B) \land (p \nmid b \in A)$，所以<code>素数p不整除集合C中的每个元素</code>；<br>②若 $ \exists \; t_1, t_2 \in A \land (t_1 \neq t_2) $，使得 <script type="math/tex">t_1 * a \equiv t_2 * a \; (mod \; p)</script>，则由同余的性质可得 <script type="math/tex">|t_1 - t_2| * a \equiv 0\;(mod \; p)</script>，又因 <script type="math/tex">|t_1 - t_2| * a \in C</script>，显然这与集合C中每一个元素不能被p整除相矛盾，所以 <script type="math/tex">t_1 * a \not\equiv t_2 * a \; (mod \; p)</script>，即<code>集合C中每个元素模p不同余</code>！<br>因此，$ C \; mod \; p = A $，则对 $ \forall \; a \in B $，必 $ \exists \; b \in A $，使得 $ ab \equiv 1 \;(mod \; p) $。<br>下面证明 $ b \notin {1,p-1,a} $：<br>若 $ b = 1 $，则 $ a \equiv a \not\equiv 1 \; (mod \; p) $，显然不成立；<br>若 $ b = p - 1 $，则 $ a(p - 1) \equiv (p - a) \not\equiv 1 (mod \; p) $，显然不成立；<br>若 $ b = a $，则 $ a^2 \equiv 1 \;(mod \; q)$，解得 $ a = 1 \vee  a = p - 1 $，因为 $ a \in B $，所以不成立。<br>综上所述，$ \forall \; a, b \in B $，当a不同时，b也随之不同，即对于集合B中的每一个元素a都能够找到一个与之配对的b，使得 $ ab \equiv 1 \;(mod \; p) $，所以 <script type="math/tex">(p - 1) ! \equiv 1 * 2b_1 * \cdots * (p - 1) (mod \; p) \equiv 1 * (p -1) (mod \; p) \equiv -1 (mod \; p)</script>.证毕！ </p>
 </blockquote>
 <h5 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h5><blockquote>
 <p>①剩余类（也称同余类）：设模数为m，则根据余数可将所有的整数分为m类，把所有与整数a模m同余的整数构成的集合叫做模m的一个剩余类，记作 $ [a] $，并把a叫作剩余类 $ [a] $ 的一个代表元。<br>②简化剩余系（也称既约剩余系、缩系）：如果一个模m的剩余类里面的数与m互素（显然，只需有一个与m互素，其余的均与m互素）就称之为一个与模m互素的剩余类，在与模m互素的全部剩余类中，各取一数所组成的集合叫做模m的一个简化剩余系。<br>③缩系的性质：1)、对于任意一个与m互素的正整数k，即 $ \gcd(k, m) = 1 $，若 <script type="math/tex">\{ a_1,a_2,\cdots,a_{\varphi(m)} \}</script> 为模m的一个缩系，则 <script type="math/tex">\{k * a_1,k * a_2,\cdots,k * a_{\varphi(m)} \}</script> 也为模m的一个缩系。2)、<script type="math/tex">(k * a_1) \cdots (k * a_{\varphi(m)}) \equiv a_1 * a_2 \cdots a_{\varphi(m)} \;(mod \; m)</script>。</p>
@@ -374,10 +374,10 @@
 <p>定义：当 $ p $ 是素数时，对 $ \forall \; a \in \mathbb{Z}$，都有 $ a^p \equiv a \;(mod \; p) $。<br>特别地，当 $ \gcd(a,p)=1 $ 时，有 $ a^{p-1} \equiv 1 \; (mod \; p) $。</p>
 </blockquote>
 <h5 id="证明：-1"><a href="#证明：-1" class="headerlink" title="证明："></a>证明：</h5><blockquote>
-<p>用完系的性质证明特殊情况：已知p是素数，令集合A为模p的最小非负完系的一个子集（去掉余数0），即 $ A = \{1,2,3,\cdots,p-1\} $，显然<code>集合A中每个元素都与p互质</code>。对 $ \forall \; a \in \mathbb{Z} \land \gcd(a,p)=1 $，令集合 $ C = \{a,2a,\cdots,(p-1)a\} $，由完系的性质2可得集合C也是模p的一个完系的一个子集（去掉余数0），<br>则 <script type="math/tex">1 * 2 * 3 * \cdots * (p-1) \equiv a * 2a * 3a * \cdots * (p-1)a \;(mod \; p)</script>，<br>$ \Rightarrow  (p-1)! \equiv (p-1)! * a^{p-1} \; (mod \; p) $，因为 $ \gcd\left((p-1)!,p\right)=1 $，<br>由同余式的性质约去 $(p-1)! $ 得 $ a^{p-1} \equiv 1 \;(mod \; p) $，证毕！</p>
+<p>用完系的性质证明特殊情况：已知p是素数，令集合A为模p的最小非负完系的一个子集（去掉余数0），即 $ A = {1,2,3,\cdots,p-1} $，显然<code>集合A中每个元素都与p互质</code>。对 $ \forall \; a \in \mathbb{Z} \land \gcd(a,p)=1 $，令集合 $ C = {a,2a,\cdots,(p-1)a} $，由完系的性质2可得集合C也是模p的一个完系的一个子集（去掉余数0），<br>则 <script type="math/tex">1 * 2 * 3 * \cdots * (p-1) \equiv a * 2a * 3a * \cdots * (p-1)a \;(mod \; p)</script>，<br>$ \Rightarrow  (p-1)! \equiv (p-1)! * a^{p-1} \; (mod \; p) $，因为 $ \gcd\left((p-1)!,p\right)=1 $，<br>由同余式的性质约去 $(p-1)! $ 得 $ a^{p-1} \equiv 1 \;(mod \; p) $，证毕！</p>
 </blockquote>
 <h5 id="备注：-1"><a href="#备注：-1" class="headerlink" title="备注："></a>备注：</h5><blockquote>
-<p>④完全剩余系（简称完系）：从模m的每个剩余类中各取一个数，得到一个由m个数组成的集合，叫做模m的一个完全剩余系。<br>完系的性质：1）、对于m个整数，其构成模m的完系等价于其关于<code>模m两两不同余</code>；2）、对于任意一个与m互素的整数k，即 $ k \in \mathbb{Z} \land \gcd(k, m) = 1 $，若 $ \{a_1,a_2,\cdots,a_m\} $ 为模m的一个完系，则 <script type="math/tex">\{k * a_1,k * a_2,\cdots,k * a_m \}</script> 也为模m的一个完系。3）、$ \{0,1,\cdots,m-1\} $ 称为模m的最小非负完全剩余系。</p>
+<p>④完全剩余系（简称完系）：从模m的每个剩余类中各取一个数，得到一个由m个数组成的集合，叫做模m的一个完全剩余系。<br>完系的性质：1）、对于m个整数，其构成模m的完系等价于其关于<code>模m两两不同余</code>；2）、对于任意一个与m互素的整数k，即 $ k \in \mathbb{Z} \land \gcd(k, m) = 1 $，若 $ {a_1,a_2,\cdots,a_m} $ 为模m的一个完系，则 <script type="math/tex">\{k * a_1,k * a_2,\cdots,k * a_m \}</script> 也为模m的一个完系。3）、$ {0,1,\cdots,m-1} $ 称为模m的最小非负完全剩余系。</p>
 </blockquote>
 <h4 id="欧拉定理："><a href="#欧拉定理：" class="headerlink" title="欧拉定理："></a>欧拉定理：</h4><blockquote>
 <p>定义：若 $a,m \in \mathbb{N}^+ \land \gcd(a,m) =1 $，则 $ a^{\varphi(m)} \equiv 1\;(mod\;m)$。</p>
@@ -720,12 +720,12 @@ y= y' - \frac{a}{\gcd(a,b)}t &t \in \mathbb{Z}
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">139k</span>
+    <span title="站点总字数">113k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:06</span>
+    <span title="站点阅读时长">1:43</span>
 </div>
 
         
